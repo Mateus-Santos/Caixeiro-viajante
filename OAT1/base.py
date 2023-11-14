@@ -1,7 +1,6 @@
 import json
 import math
 
-
 #Coletando dados do json e criando uma matriz;
 class Database():
     def __init__(self):
@@ -15,12 +14,12 @@ class Database():
     #Coletando locais de entrega
     def locaisEntrega(self):
         local = []
-        locais = [[0, self.base['nome'], self.base['localizacao'][0], self.base['localizacao'][1]]]
-        for i in range(len(self.base['entregas'])):
-            local.append(self.base['entregas'][i]['id'])
-            local.append(self.base['entregas'][i]['destinatario'])
-            local.append(self.base['entregas'][i]['localizacao'][0])
-            local.append(self.base['entregas'][i]['localizacao'][1])
+        locais = [[0, self.base['estabelecimentos'][0]['nome'], self.base['estabelecimentos'][0]['localizacao'][0], self.base['estabelecimentos'][0]['localizacao'][1]]]
+        for i in range(len(self.base['estabelecimentos'][0]['entregas'])):
+            local.append(self.base['estabelecimentos'][0]['entregas'][i]['id'])
+            local.append(self.base['estabelecimentos'][0]['entregas'][i]['destinatario'])
+            local.append(self.base['estabelecimentos'][0]['entregas'][i]['localizacao'][0])
+            local.append(self.base['estabelecimentos'][0]['entregas'][i]['localizacao'][1])
             locais.append(local)
             local = []
         return locais
