@@ -52,5 +52,5 @@ class Database():
                 a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
                 c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
                 distancia = raio_terra * c
-                distancias.append([locais_entrega[ds][1], locais_entrega[ds2][1], int(distancia)])
+                distancias.append([locais_entrega[ds][1], locais_entrega[ds2][1], round(distancia, 2)])
         return distancias

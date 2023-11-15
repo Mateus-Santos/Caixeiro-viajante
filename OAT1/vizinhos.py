@@ -20,23 +20,24 @@ def encontrar_proximo(local_atual, locais_nao_visitados): # n²
             if distancia < menor_distancia:
                 menor_distancia = distancia
                 proximo_local = destino
-    return proximo_local
+    return [proximo_local, menor_distancia]
 
 local_atual = distancias[0][0]
 locais_nao_visitados = locais.copy()
 locais_nao_visitados.remove(local_atual)
 
 # n³
-for _ in range(len(locais) - 1):  # -1 para evitar repetir McDonalds na primeira vez
+for x in range(len(locais) - 1):  # -1 rodar o código sem erros
     proximo = encontrar_proximo(local_atual, locais_nao_visitados)
-    caminho.append((local_atual, proximo))
-    local_atual = proximo
-    locais_nao_visitados.remove(proximo) 
+    caminho.append((local_atual, proximo[0], proximo[1]))
+    local_atual = proximo[0]
+    locais_nao_visitados.remove(proximo[0])
 
-# Adicione o retorno ao McDonalds no final
-caminho.append((local_atual, distancias[0][0]))
+# Adicione o retorno ao Estabelecimento no final
+estabelecimento = distancias[0][0]
+for y in distancias:
+    if(y[1] == estabelecimento and y[0] == local_atual):
+        caminho.append((y[0], y[1], y[2]))
 
-for origem, destino in caminho:
-    print(f"{origem} para {destino}")
-
-print(distancias)
+for origem, destino, distancia in caminho:
+    print(f"{origem} para {destino} em uma distancia de: {distancia} Km")
