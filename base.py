@@ -54,3 +54,15 @@ class Database():
                 distancia = raio_terra * c
                 distancias.append([locais_entrega[ds][1], locais_entrega[ds2][1], round(distancia, 2)])
         return distancias
+    
+    def pesos(self):
+        pesos = []
+        for i in range(len(self.base['entregas'])):
+            pesos.append(self.base['entregas'][i]['peso'])
+        return pesos
+    
+    def valores(self):
+        valores = []
+        for i in range(len(self.base['entregas'])):
+            valores.append(self.base['entregas'][i]['total_entrega'])
+        return valores
